@@ -1,7 +1,9 @@
 package co.edu.uniandes.dse.TallerPersistencia.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
+
 import lombok.Data;
 
 @Entity
@@ -12,7 +14,8 @@ public class ScriptEntity extends BaseEntity {
     private String nombre;
     private String nombreOriginal;
  
-    @OneToOne(mappedBy = "script")
+    @OneToOne
+    @JoinColumn(name = "movie_id", nullable = false, unique = true)
     private MovieEntity pelicula;
 
 

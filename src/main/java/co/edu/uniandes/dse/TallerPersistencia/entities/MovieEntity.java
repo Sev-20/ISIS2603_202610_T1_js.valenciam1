@@ -3,7 +3,9 @@ package co.edu.uniandes.dse.TallerPersistencia.entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.Data;
+import jakarta.persistence.CascadeType;
 
 @Entity
 @Data
@@ -20,12 +22,7 @@ public class MovieEntity extends BaseEntity {
     @ManyToMany
     private java.util.List<GenreEntity> genres;
 
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }   
+    @OneToOne(cascade = CascadeType.REMOVE, orphanRemoval = true)
+    private ScriptEntity script;
     
 }
